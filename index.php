@@ -29,6 +29,9 @@ class n138 {
 		$this->exit_params[$key] = $val;
 	}
 }
+function sum($param1, $param2) {
+    return $param1+$param2;
+}
 ini_set('upload_max_filesize', '25M');
 ini_set('post_max_size', '100M');
 header('Content-Type: text/plain');
@@ -98,7 +101,7 @@ $item = [
     'lb', 'cb', 'rb',
 ];
 foreach ($item as $key => $val) {
-    if ($files_before_1["error"][$val]!=0) {
+    if ($files_before_1["error"][$val]!=0 || !isset($files_before_1["error"][$val])) {
         unset($files_before_1['error'][$val]);
         unset($files_before_1['name'][$val]);
         unset($files_before_1['tmp_name'][$val]);
@@ -114,7 +117,161 @@ foreach ($item as $key => $val) {
         $files_before_1valid[$val]['type']      = $files_before_1['type'][$val];
         $files_before_1valid[$val]['error']     = $files_before_1['error'][$val];
         $files_before_1valid[$val]['size']      = $files_before_1['size'][$val];
+
+        $files_before_1valid[$val]['raw_data']  = NULL;
+        $files_before_1valid[$val]['size_wh']   = getimagesize($files_before_1['tmp_name'][$val]);
+        switch ($files_before_1valid[$val]['size_wh'][2]) {
+            case IMAGETYPE_JPEG:
+                $files_before_1valid[$val]['raw_data'] = imagecreatefromjpeg($files_before_1valid[$val]['tmp_name']);
+                $files_before_1valid[$val]['mime'] = 'JPEG';
+                break;
+            case IMAGETYPE_PNG:
+                $files_before_1valid[$val]['raw_data'] = imagecreatefrompng($files_before_1valid[$val]['tmp_name']);
+                $files_before_1valid[$val]['mime'] = 'PNG';
+                break;
+            case IMAGETYPE_GIF:
+                $files_before_1valid[$val]['raw_data'] = imagecreatefromgif($files_before_1valid[$val]['tmp_name']);
+                $files_before_1valid[$val]['mime'] = 'GIF';
+                break;
+            default:
+                break;
+        }
     }
 }
 
+$files_canvas_size=[ 0, 0 ];
+if (FALSE) {
+} elseif (FALSE) {
+} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['lt']['tmp_name'])) {
+    $files_canvas_size = [
+        max($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['ct']['size_wh'][0]),
+        sum($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['ct']['size_wh'][1]),
+    ];
+    
+    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagecopy(
+        $files_canvas,
+        $files_before_1valid['ct']['raw_data'],
+        0,
+        0,
+        0,
+        0,
+        $files_before_1valid['ct']['size_wh'][0],
+        $files_before_1valid['ct']['size_wh'][1]
+    );
+    imagecopy(
+        $files_canvas,
+        $files_before_1valid['cm']['raw_data'],
+        0,
+        $files_before_1valid['ct']['size_wh'][1],
+        0,
+        0,
+        $files_before_1valid['ct']['size_wh'][0],
+        $files_before_1valid['ct']['size_wh'][1]
+    );
+
+} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['rt']['tmp_name'])) {
+    $files_canvas_size = [
+        sum($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['lm']['size_wh'][0]),
+        max($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['lm']['size_wh'][1]),
+    ];
+    
+    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagecopy(
+        $files_canvas,
+        $files_before_1valid['lm']['raw_data'],
+        0,
+        0,
+        0,
+        0,
+        $files_before_1valid['lm']['size_wh'][0],
+        $files_before_1valid['lm']['size_wh'][1]
+    );
+    imagecopy(
+        $files_canvas,
+        $files_before_1valid['cm']['raw_data'],
+        $files_before_1valid['lm']['size_wh'][0],
+        0,
+        0,
+        0,
+        $files_before_1valid['cm']['size_wh'][0],
+        $files_before_1valid['cm']['size_wh'][1]
+    );
+
+} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['rm']['tmp_name'])) {
+    $files_canvas_size = [
+        sum($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['rm']['size_wh'][0]),
+        max($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['rm']['size_wh'][1]),
+    ];
+    
+    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagecopy(
+        $files_canvas,
+        $files_before_1valid['cm']['raw_data'],
+        0,
+        0,
+        0,
+        0,
+        $files_before_1valid['cm']['size_wh'][0],
+        $files_before_1valid['cm']['size_wh'][1]
+    );
+    imagecopy(
+        $files_canvas,
+        $files_before_1valid['rm']['raw_data'],
+        $files_before_1valid['cm']['size_wh'][0],
+        0,
+        0,
+        0,
+        $files_before_1valid['cm']['size_wh'][0],
+        $files_before_1valid['cm']['size_wh'][1]
+    );
+
+} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['lb']['tmp_name'])) {
+    $files_canvas_size = [
+        max($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['cb']['size_wh'][0]),
+        sum($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['cb']['size_wh'][1]),
+    ];
+    
+    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagecopy(
+        $files_canvas,
+        $files_before_1valid['cm']['raw_data'],
+        0,
+        0,
+        0,
+        0,
+        $files_before_1valid['cm']['size_wh'][0],
+        $files_before_1valid['cm']['size_wh'][1]
+    );
+    imagecopy(
+        $files_canvas,
+        $files_before_1valid['cb']['raw_data'],
+        0,
+        $files_before_1valid['cm']['size_wh'][1],
+        0,
+        0,
+        $files_before_1valid['cm']['size_wh'][0],
+        $files_before_1valid['cm']['size_wh'][1]
+    );
+
+} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['rb']['tmp_name'])) {
+
+
+$item = [
+    'lt', 'ct', 'rt',
+    'lm', 'cm', 'rm',
+    'lb', 'cb', 'rb',
+];
+foreach ($item as $key => $val) {
+    if (!($files_before_1["error"][$val]!=0 || !isset($files_before_1["error"][$val]))) {
+        // ob_start();
+        // imagepng($files_before_1valid[$val]['raw_data'], NULL);
+        // imagedestroy( $files_before_1valid[$val]['raw_data'] ); 
+        // $files_before_1valid[$val]['raw_data'] = ob_get_clean();
+        // https://9-bb.com/php-gd/
+        $files_before_1valid[$val]['raw_data'] = NULL;
+    }
+}
+imagepng( $files_canvas, NULL );
 var_dump($files_before_1valid);
+var_dump($files_canvas_size);
