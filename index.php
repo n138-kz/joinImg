@@ -326,7 +326,7 @@ foreach ($item as $key => $val) {
 }
 
 $fp = fopen('access.log', 'a');
-fwrite($fp, json_encode(['issued_at'=>time(),$files_before_1valid]) . PHP_EOL );
+fwrite($fp, json_encode(['issued_at'=>time(),'request_by'=>$_SERVER['REMOTE_ADDR'],$files_before_1valid]) . PHP_EOL );
 fclose($fp);
 
 imagepng( $files_canvas, NULL );
