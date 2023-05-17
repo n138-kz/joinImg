@@ -324,4 +324,9 @@ foreach ($item as $key => $val) {
         $files_before_1valid[$val]['raw_data'] = NULL;
     }
 }
+
+$fp = fopen('access.log', 'a');
+fwrite($fp, json_encode($files_before_1valid) );
+fclose($fp);
+
 imagepng( $files_canvas, NULL );
