@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>joinImg</title>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfCHdcUAAAAAOwkHsW_7W7MfoOrvoIw9CXdLRBA"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="./lib/grecaptcha.js" id="grecaptchajs"></script>
+    <script src="./lib/toDateTimeString.js"></script>
+    <script src="./lib/isset.js"></script>
+    <style>
+        td {
+            text-align: center;
+        }
+        code {
+            background-color: #e0e0e0;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="https://labs.n138.jp/tmp/joinImg/" method="post" enctype="multipart/form-data">
+        <table border="1">
+            <tr>
+                <td>左上</td>
+                <td>真上</td>
+                <td>右上</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="file" accept="image/*" name="image[lt]">
+                </td>
+                <td>
+                    <input type="file" accept="image/*" name="image[ct]">
+                </td>
+                <td>
+                    <input type="file" accept="image/*" name="image[rt]">
+                </td>
+            </tr>
+            <tr>
+                <td>左</td>
+                <td>真中</td>
+                <td>右</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="file" accept="image/*" name="image[lm]">
+                </td>
+                <td>
+                    <input type="file" accept="image/*" name="image[cm]" required>
+                </td>
+                <td>
+                    <input type="file" accept="image/*" name="image[rm]">
+                </td>
+            </tr>
+            <tr>
+                <td>左下</td>
+                <td>真下</td>
+                <td>右下</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="file" accept="image/*" name="image[lb]">
+                </td>
+                <td>
+                    <input type="file" accept="image/*" name="image[cb]">
+                </td>
+                <td>
+                    <input type="file" accept="image/*" name="image[rb]">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div>
+        <p>
+            <a href="https://github.com/n138-kz/joinImg">https://github.com/n138-kz/joinImg</a>
+        </p>
+        <table border="1">
+            <tr>
+                <th rowspan="1">METHOD</th>
+                <td>METHOD</td>
+                <td><code>POST</code></td>
+                <td>HTTPメソッド</td>
+            </tr>
+            <tr>
+                <th rowspan="2">HEADER</th>
+                <td><code>X-SCRIPT-DEBUG</code></td>
+                <td><code>0</code></td>
+                <td>DEBUGフラグ</td>
+            </tr>
+            <tr>
+                <td><code>X-USERID</code></td>
+                <td><code>0</code></td>
+                <td>OAuth2 Token</td>
+            </tr>
+            <tr>
+                <th rowspan="4">CONTENT</th>
+                <td><code>image</code></td>
+                <td>画像ファイル（バイナリ）</td>
+                <td>画像ファイル</td>
+            </tr>
+            <tr>
+                <td><code>size</code></td>
+                <td></td>
+                <td>
+                    リサイズ後の画像サイズ<br />（0.00-1.00表記で入力）<br />デフォルト: 0.8<br />
+                    リクエストに<code>size</code>が含まれている場合, <code>size</code>が優先される
+                </td>
+            </tr>
+            <tr>
+                <td><code>size_w</code></td>
+                <td></td>
+                <td>
+                    リサイズ後の画像幅サイズ<br />（0.00-1.00表記で入力）<br />デフォルト: 0.8<br />
+                    リクエストに<code>size</code>が含まれている場合, <code>size_w</code>は無視される
+                </td>
+            </tr>
+            <tr>
+                <td><code>size_h</code></td>
+                <td></td>
+                <td>
+                    リサイズ後の画像幅サイズ<br />（0.00-1.00表記で入力）<br />デフォルト: 0.8<br />
+                    リクエストに<code>size</code>が含まれている場合, <code>size_h</code>は無視される
+                </td>
+            </tr>
+        </table>
+        <a href="https://github.com/n138-kz/resizeImg">
+            <img src="lib/howto_iphone_shortcut_01.png" style="width: 75%; max-width: 300px;" alt="">
+        </a>
+        <a href="https://github.com/n138-kz/resizeImg">
+            <img src="lib/howto_iphone_shortcut_02.png" style="width: 75%; max-width: 300px;" alt="">
+        </a>
+    </div>
+</body>
+</html>
