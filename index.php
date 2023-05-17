@@ -325,5 +325,3 @@ foreach ($item as $key => $val) {
     }
 }
 imagepng( $files_canvas, NULL );
-var_dump($files_before_1valid);
-var_dump($files_canvas_size);
