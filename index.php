@@ -337,4 +337,6 @@ $fp = fopen('access.log', 'a');
 fwrite($fp, json_encode(['issued_at'=>time(),'request_by'=>$_SERVER['REMOTE_ADDR'],$files_before_1valid]) . PHP_EOL );
 fclose($fp);
 
+header('Content-Type: image/png');
+header('Content-Disposition: attachment; filename="'.time().'.png'.'"');
 imagepng( $files_canvas, NULL );
