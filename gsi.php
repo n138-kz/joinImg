@@ -66,4 +66,5 @@ if ($payload) {
 
     die(json_encode($curl_res));
 }
-var_dump([$google_oauth2_info,$curl_res]);
+
+die(json_encode($curl_res));
