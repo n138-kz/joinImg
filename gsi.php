@@ -53,4 +53,17 @@ if ( !isset(HTTP_X_USER_ID['credential']) ) {
 
 $google_oauth2_info['credential'] = HTTP_X_USER_ID['credential'];
 
-var_dump([$google_oauth2_secret]);
+$google_oauth2 = new Google_Client(['client_id' => $google_oauth2_info['credential']]);
+$payload = $client->verifyIdToken($google_oauth2_info['clientid']);
+
+$curl_res['ts']   = time();
+$curl_res['mesg'] = '';
+$curl_res['goauth2'] = $google_oauth2_info;
+if ($payload) {
+    array_push($curl_res['goauth2'],$payload);
+} else {
+    $curl_res['mesg'] = 'Bad request.';
+
+    die(json_encode($curl_res));
+}
+var_dump([$google_oauth2_info]);
