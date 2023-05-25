@@ -35,6 +35,14 @@ if ( !isset(HTTP_X_USER_ID['clientId']) && !isset(HTTP_X_USER_ID['client_id']) )
     die(json_encode($curl_res));
 }
 
+$google_oauth2_secret = [];
+if(false){
+} elseif ( isset(HTTP_X_USER_ID['clientId']) ) {
+    $google_oauth2_secret['clientid'] = HTTP_X_USER_ID['clientId'];
+} elseif ( isset(HTTP_X_USER_ID['client_id']) ) {
+    $google_oauth2_secret['clientid'] = HTTP_X_USER_ID['client_id'];
+}
+
 if ( !isset(HTTP_X_USER_ID['credential']) ) {
     http_response_code(400);
     $curl_res['ts']   = time();
