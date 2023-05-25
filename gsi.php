@@ -27,5 +27,21 @@ if ( !isset($_SERVER['HTTP_X_USER_ID']) ) {
 
 define('HTTP_X_USER_ID', json_decode($_SERVER['HTTP_X_USER_ID'], true));
 
+if ( !isset(HTTP_X_USER_ID['clientId']) && !isset(HTTP_X_USER_ID['client_id']) ) {
+    http_response_code(400);
+    $curl_res['ts']   = time();
+    $curl_res['mesg'] = 'Bad request.';
+
+    die(json_encode($curl_res));
+}
+
+if ( !isset(HTTP_X_USER_ID['credential']) ) {
+    http_response_code(400);
+    $curl_res['ts']   = time();
+    $curl_res['mesg'] = 'Bad request.';
+
+    die(json_encode($curl_res));
+}
+
 
 var_dump([$_REQUEST,$_SERVER,HTTP_X_USER_ID]);
