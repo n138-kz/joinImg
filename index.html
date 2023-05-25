@@ -32,7 +32,7 @@
             }
 
             xhr.open('POST','./gsi.php');
-            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+            xhr.setRequestHeader('content-type', 'Application/json');
             xhr.setRequestHeader('X-USER-ID', JSON.stringify(googleUser));
             xhr.send('ts='+(Math.floor((new Date()).getTime()/1000)));
         }
