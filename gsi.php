@@ -67,4 +67,5 @@ if ($payload) {
     die(json_encode($curl_res));
 }
 
+header('Content-Type: Application/json');
 die(json_encode($curl_res));
