@@ -54,6 +54,7 @@ if ( !isset(HTTP_X_USER_ID['credential']) ) {
 $google_oauth2_info['credential'] = HTTP_X_USER_ID['credential'];
 
 var_dump([$google_oauth2_info]);
+exit();
 
 $google_oauth2 = new Google_Client(['client_id' => $google_oauth2_info['credential']]);
 $payload = $google_oauth2->verifyIdToken($google_oauth2_info['clientid']);
