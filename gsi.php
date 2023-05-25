@@ -53,4 +53,4 @@ if ( !isset(HTTP_X_USER_ID['credential']) ) {
 
 $google_oauth2_secret['credential'] = HTTP_X_USER_ID['credential'];
 
-var_dump([$_REQUEST,$_SERVER,HTTP_X_USER_ID]);
+var_dump([$google_oauth2_secret]);
