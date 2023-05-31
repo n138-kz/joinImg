@@ -157,6 +157,7 @@ if (FALSE) {
     ];
     
     $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
     imagecopy(
         $files_canvas,
         $files_before_1valid['lt']['raw_data'],
@@ -175,6 +176,7 @@ if (FALSE) {
     ];
     
     $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
     imagecopy(
         $files_canvas,
         $files_before_1valid['ct']['raw_data'],
@@ -203,6 +205,7 @@ if (FALSE) {
     ];
     
     $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
     
 } elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['lm']['tmp_name'])) {
     $files_canvas_size = [
@@ -211,6 +214,7 @@ if (FALSE) {
     ];
     
     $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
     imagecopy(
         $files_canvas,
         $files_before_1valid['lm']['raw_data'],
@@ -239,6 +243,7 @@ if (FALSE) {
     ];
     
     $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
     imagecopy(
         $files_canvas,
         $files_before_1valid['cm']['raw_data'],
@@ -267,6 +272,7 @@ if (FALSE) {
     ];
     
     $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
 
 } elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['cb']['tmp_name'])) {
     $files_canvas_size = [
@@ -275,6 +281,7 @@ if (FALSE) {
     ];
     
     $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
     imagecopy(
         $files_canvas,
         $files_before_1valid['cm']['raw_data'],
@@ -303,6 +310,7 @@ if (FALSE) {
     ];
     
     $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
+    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
     imagecopy(
         $files_canvas,
         $files_before_1valid['cm']['raw_data'],
