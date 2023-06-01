@@ -150,92 +150,6 @@ foreach ($item as $key => $val) {
 $files_canvas_size=[ 0, 0 ];
 if (FALSE) {
 } elseif (FALSE) {
-} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['lt']['tmp_name'])) {
-    $files_canvas_size = [
-        max($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['lt']['size_wh'][0]),
-        max($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['lt']['size_wh'][1]),
-    ];
-    
-    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
-    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
-    imagecopy(
-        $files_canvas,
-        $files_before_1valid['lt']['raw_data'],
-        0,
-        0,
-        0,
-        0,
-        $files_before_1valid['lt']['size_wh'][0],
-        $files_before_1valid['lt']['size_wh'][1]
-    );
-
-} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['ct']['tmp_name'])) {
-    $files_canvas_size = [
-        max($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['ct']['size_wh'][0]),
-        sum($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['ct']['size_wh'][1]),
-    ];
-    
-    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
-    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
-    imagecopy(
-        $files_canvas,
-        $files_before_1valid['ct']['raw_data'],
-        0,
-        0,
-        0,
-        0,
-        $files_before_1valid['ct']['size_wh'][0],
-        $files_before_1valid['ct']['size_wh'][1]
-    );
-    imagecopy(
-        $files_canvas,
-        $files_before_1valid['cm']['raw_data'],
-        0,
-        $files_before_1valid['ct']['size_wh'][1],
-        0,
-        0,
-        $files_before_1valid['ct']['size_wh'][0],
-        $files_before_1valid['ct']['size_wh'][1]
-    );
-
-} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['rt']['tmp_name'])) {
-    $files_canvas_size = [
-        max($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['rt']['size_wh'][0]),
-        max($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['rt']['size_wh'][1]),
-    ];
-    
-    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
-    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
-    
-} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['lm']['tmp_name'])) {
-    $files_canvas_size = [
-        sum($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['lm']['size_wh'][0]),
-        max($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['lm']['size_wh'][1]),
-    ];
-    
-    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
-    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
-    imagecopy(
-        $files_canvas,
-        $files_before_1valid['lm']['raw_data'],
-        0,
-        0,
-        0,
-        0,
-        $files_before_1valid['lm']['size_wh'][0],
-        $files_before_1valid['lm']['size_wh'][1]
-    );
-    imagecopy(
-        $files_canvas,
-        $files_before_1valid['cm']['raw_data'],
-        $files_before_1valid['lm']['size_wh'][0],
-        0,
-        0,
-        0,
-        $files_before_1valid['cm']['size_wh'][0],
-        $files_before_1valid['cm']['size_wh'][1]
-    );
-
 } elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['rm']['tmp_name'])) {
     $files_canvas_size = [
         sum($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['rm']['size_wh'][0]),
@@ -265,15 +179,6 @@ if (FALSE) {
         $files_before_1valid['cm']['size_wh'][1]
     );
 
-} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['lb']['tmp_name'])) {
-    $files_canvas_size = [
-        max($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['lb']['size_wh'][0]),
-        max($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['lb']['size_wh'][1]),
-    ];
-    
-    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
-    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
-
 } elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['cb']['tmp_name'])) {
     $files_canvas_size = [
         max($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['cb']['size_wh'][0]),
@@ -297,25 +202,6 @@ if (FALSE) {
         $files_before_1valid['cb']['raw_data'],
         0,
         $files_before_1valid['cm']['size_wh'][1],
-        0,
-        0,
-        $files_before_1valid['cm']['size_wh'][0],
-        $files_before_1valid['cm']['size_wh'][1]
-    );
-
-} elseif ( isset($files_before_1valid['cm']['tmp_name']) && isset($files_before_1valid['rb']['tmp_name'])) {
-    $files_canvas_size = [
-        max($files_before_1valid['cm']['size_wh'][0], $files_before_1valid['rb']['size_wh'][0]),
-        max($files_before_1valid['cm']['size_wh'][1], $files_before_1valid['rb']['size_wh'][1]),
-    ];
-    
-    $files_canvas = imagecreatetruecolor($files_canvas_size[0], $files_canvas_size[1]);
-    imagefill($files_canvas, 0, 0, imagecolorallocate($files_canvas, 255, 255, 255));
-    imagecopy(
-        $files_canvas,
-        $files_before_1valid['cm']['raw_data'],
-        0,
-        0,
         0,
         0,
         $files_before_1valid['cm']['size_wh'][0],
