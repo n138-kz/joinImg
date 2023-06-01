@@ -239,5 +239,9 @@ fclose($fp);
 if (RETURN_IMAGE) {
     header('Content-Type: image/png');
     header('Content-Disposition: attachment; filename="'.time().'.png'.'"');
+    imagepng( $files_canvas, 'php://memory/temp.png' );
+    $size = filesize('php://memory/temp.png');
+    header('Content-Length: '.filesize('php://memory/temp.png'));
+    echo file_get_contents('php://memory/temp.png');
 }
 imagepng( $files_canvas, NULL );
