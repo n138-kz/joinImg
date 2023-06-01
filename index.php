@@ -45,6 +45,11 @@ if( isset($_SERVER['HTTP_X_SCRIPT_DEBUG']) ){
 }
 define('DEBUG', $exitStatus->getVal('debug'));
 
+if( isset($_SERVER['HTTP_X_RETURN_IMAGE']) ){
+    $exitStatus->setVal('return_image', (bool)($_SERVER['HTTP_X_RETURN_IMAGE']));
+}
+define('RETURN_IMAGE', $exitStatus->getVal('return_image'));
+
 if( mb_strtolower($_SERVER['REQUEST_METHOD']) != 'post' ){
 	http_response_code(405);
 	$exitStatus->setVal('time', time());
@@ -231,6 +236,8 @@ $fp = fopen('access.log', 'a');
 fwrite($fp, json_encode(['issued_at'=>time(),'request_by'=>$_SERVER['REMOTE_ADDR'],$files_before_1valid]) . PHP_EOL );
 fclose($fp);
 
-header('Content-Type: image/png');
-header('Content-Disposition: attachment; filename="'.time().'.png'.'"');
+if (RETURN_IMAGE) {
+    header('Content-Type: image/png');
+    header('Content-Disposition: attachment; filename="'.time().'.png'.'"');
+}
 imagepng( $files_canvas, NULL );
