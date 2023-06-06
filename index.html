@@ -11,12 +11,16 @@
     <script src="./lib/toDateTimeString.js"></script>
     <script src="./lib/isset.js"></script>
     <style>
-        td {
+        td:not(#joinImg td) {
             text-align: center;
         }
         code {
             background-color: #e0e0e0;
             padding: 0 10px;
+        }
+        table {
+            width: 100%;
+            max-width: 500px;
         }
         @media screen and (orientation: portrait) {
             .display_landscape {
@@ -28,11 +32,27 @@
                 display: none;
             }
         }
+        input:not(input[type="submit"]) {
+            width: 200px;
+            margin: 0 5px;
+            padding: 0 5px;
+        }
+        input.kbd_numeric {
+            border: none;
+            border-bottom: 1px solid #000;
+        }
+        div#exec_output {
+            background-color: pink;
+        }
+        div#exec_output p {
+            margin: none;
+            padding: none;
+        }
     </style>
 </head>
 <body>
     <form action="./" method="post" enctype="multipart/form-data" class="display_landscape">
-        <table border="1">
+        <table border="1" id="joinImg">
             <tr>
                 <td>ベースとなる画像</td>
                 <td>右</td>
@@ -118,18 +138,18 @@
             <tr>
                 <th rowspan="9">CONTENT</th>
                 <td><code>image[cm]</code></td>
-                <td>画像ファイル（バイナリ）</td>
-                <td>画像ファイル(ベースとなる画像)</td>
+                <td>画像ファイル<br />（バイナリ）</td>
+                <td>画像ファイル<br />(ベースとなる画像)</td>
             </tr>
             <tr>
                 <td><code>image[rm]</code></td>
-                <td>画像ファイル（バイナリ）</td>
-                <td>画像ファイル(右)</td>
+                <td>画像ファイル<br />（バイナリ）</td>
+                <td>画像ファイル<br />(右)</td>
             </tr>
             <tr>
                 <td><code>image[cb]</code></td>
-                <td>画像ファイル（バイナリ）</td>
-                <td>画像ファイル(真下)</td>
+                <td>画像ファイル<br />（バイナリ）</td>
+                <td>画像ファイル<br />(真下)</td>
             </tr>
         </table>
     </div>
