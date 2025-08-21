@@ -1,6 +1,7 @@
 # [joinImg](https://github.com/n138-kz/joinImg)
 
-[![GitHub Extra Pins](https://github-readme-stats.vercel.app/api/pin/?locale=ja&show_owner=true&theme=graywhite&username=n138-kz&repo=joinImg)](https://github.com/n138-kz/joinImg)
+[![GitHub Extra Pins](https://github-readme-stats.vercel.app/api/pin/?locale=ja&show_owner=true&theme=graywhite&username=n138-kz&repo=joinImg)](https://github.com/n138-kz/joinImg)  
+<img src="https://images-ext-1.discordapp.net/external/DXk9P9PMn5W4gkJsNfvceo5Rwy9IYywCghch05PrWdo/https/opengraph.githubassets.com/14c876fc5b5e2d014630660f2d96e1d45e90e69e971c065919db22b1e45b06e6/n138-kz/joinImg?format=webp" style="width:400px">
 
 
 ## Repos Info
