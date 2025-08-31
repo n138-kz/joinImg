@@ -88,6 +88,26 @@
 				}
 			}
 			async getUserInfo (token) {
+				try {
+					let url, req, res;
+					url = 'https://discordapp.com/api/users/@me';
+					req = await fetch(url, {
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+						cache: 'no-store',
+					});
+					
+					if (await req.status>299||await req.status<200) {
+						throw new Error(`HTTP Error: ${await req.statusText}(code:${await req.status}) ${req.url}`, {cause: `HTTP ${await req.status} Error`});
+					}
+					res = await req.json();
+					console.debug({ url:url, req:req, res:res, });
+				} catch(e) {
+					console.error(e, {name: e.name, message: e.message, stack: e.stack});
+					this.logger('error', e.stack);
+					location.replace( `${location.origin}${location.pathname}?error=access_denied&error_description=[getAccessToken]+Something+Error+has+occurred.+Please+confirm+the+log` );
+				}
 			}
 		}
 		window.addEventListener('DOMContentLoaded', async ()=>{
