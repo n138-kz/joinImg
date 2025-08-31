@@ -53,6 +53,14 @@
 					dom[1] = document.createElement('div');
 					dom[1].innerText = `${qlist.error_description}`;
 					dom[0].appendChild(dom[1]);
+					dom[1] = document.createElement('div');
+					let log = sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'log_latest' );
+					try { log = ( log === "" || log === null || log === undefined ) ? {date:'',data:'',level:''} : JSON.parse(log); } catch { log = {date:'',data:'',level:''} };
+					dom[1].style.fontSize = '9pt';
+					dom[1].style.whiteSpace = 'pre-wrap';
+					dom[1].innerText = `[${log.date}][${log.level}] ${log.data}`;
+
+					dom[0].appendChild(dom[1]);
 
 					document.body.prepend(dom[0]);
 					return qlist;
