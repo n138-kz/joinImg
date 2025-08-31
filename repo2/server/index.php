@@ -71,6 +71,7 @@ if($req['discord'][0]['id']=='') {
 }
 # --Authn--
 
+# --Print in application/json
 if( substr(strtolower($req['content-type']), 0, strlen('application/json'))=='application/json') {
 	echo json_encode([
 		'request'=>$req,
@@ -80,3 +81,5 @@ if( substr(strtolower($req['content-type']), 0, strlen('application/json'))=='ap
 		],
 	]);
 }
+# --Print in application/json--
+
