@@ -44,6 +44,17 @@
 			}
 			async login (qlist) {
 				if ( qlist.error !== '' || qlist.error_description !== '' ) {
+					let dom = [];
+					dom[0] = document.createElement('div');
+					dom[0].classList.add('error');
+					dom[1] = document.createElement('h2');
+					dom[1].innerText = `${qlist.error}`;
+					dom[0].appendChild(dom[1]);
+					dom[1] = document.createElement('div');
+					dom[1].innerText = `${qlist.error_description}`;
+					dom[0].appendChild(dom[1]);
+
+					document.body.prepend(dom[0]);
 					return qlist;
 				}
 				
