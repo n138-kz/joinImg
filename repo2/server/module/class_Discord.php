@@ -1,8 +1,8 @@
 <?php
 namespace n138kz;
 class Discord {
-	function login(qlist=[]) {
-		if( ! isset(qlist['access_token']) ) {
+	function login($qlist=[]) {
+		if( ! isset($qlist['access_token']) ) {
 			return null;
 		}
 	}
