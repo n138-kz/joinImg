@@ -42,7 +42,6 @@
 				sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'log', JSON.stringify(logstorage) );
 				sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'log_latest', JSON.stringify(log) );
 			}
-
 			async login (qlist) {
 				if ( qlist.error !== '' || qlist.error_description !== '' ) {
 					return qlist;
