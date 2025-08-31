@@ -10,4 +10,5 @@ header("Access-Control-Allow-Headers: Content-Type, Content-Length, Origin, Acce
 header('Server: Hidden');
 header('X-Powered-By: Hidden');
 
+$_SERVER['CONTENT_TYPE'] = (isset($_SERVER['CONTENT_TYPE']))?$_SERVER['CONTENT_TYPE']:'application/octet-stream';
 
