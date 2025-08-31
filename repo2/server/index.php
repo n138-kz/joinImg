@@ -14,6 +14,7 @@ header("Access-Control-Allow-Headers: Content-Type, Content-Length, Origin, Acce
 header('Server: Hidden');
 header('X-Powered-By: Hidden');
 
+# --Method check
 $has_check_pass = false;
 $allow_request_method = ['get', 'connect','options', 'head'];
 foreach($allow_request_method as $k => $v){
@@ -32,6 +33,7 @@ if(!$has_check_pass){
 	]);
 	exit(1);
 }
+# --Method check--
 
 $_SERVER['CONTENT_TYPE'] = (isset($_SERVER['CONTENT_TYPE']))?$_SERVER['CONTENT_TYPE']:'application/octet-stream';
 
