@@ -52,4 +52,4 @@ foreach(['direction','token', 'content-type', 'files',] as $k => $v) {
 		$req[$v] = $_GET[$v];
 	}
 }
-$req['token'] = hash_hmac('sha256', $req['token'], $_SERVER['REMOTE_ADDR'].':'.$_SERVER['REMOTE_PORT'].':'.time());
+
