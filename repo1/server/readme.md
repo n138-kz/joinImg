@@ -2,5 +2,5 @@
 
 ## redirect_rule
 
-- [`console`](./console) --> [`index.html`](index.html)
-- [`index`](./index) --> [`index.html`](index.html)
+- [`console`/index.php](./console) --> [`index.html`](index.html)
+- [`index`/index.php](./index) --> [`index.html`](index.html)
