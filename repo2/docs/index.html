@@ -108,6 +108,9 @@
 					console.debug({ url:url, req:req, res:res, });
 
 					sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'users_me', JSON.stringify(res) );
+
+					res.name = ( res.global_name === '' || res.global_name === null || res.global_name === undefined ) ? res.username : res.global_name;
+					res.avatar = `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}`;
 				} catch(e) {
 					console.error(e, {name: e.name, message: e.message, stack: e.stack});
 					this.logger('error', e.stack);
