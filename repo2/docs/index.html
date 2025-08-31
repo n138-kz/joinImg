@@ -124,6 +124,23 @@
 							dom[0].appendChild(dom[1]);
 							e.parentNode.parentNode.appendChild(dom[0]);
 						}
+						{
+							let dom = [];
+							dom[0] = document.createElement('span');
+							dom[1] = document.createElement('a');
+							dom[1].href = 'https://discord.com/channels/@me';
+							dom[1].taget = '_blank';
+							dom[2] = document.createElement('img');
+							dom[2].src = res.avatar;
+							dom[2].alt = 'discord avatar';
+							dom[2].style.maxHeight = '1em';
+							dom[1].appendChild(dom[2]);
+							dom[2] = document.createElement('span');
+							dom[2].innerText = res.name;
+							dom[1].appendChild(dom[2]);
+							dom[0].appendChild(dom[1]);
+							e.parentNode.parentNode.after(dom[0]);
+						}
 					});
 				} catch(e) {
 					console.error(e, {name: e.name, message: e.message, stack: e.stack});
