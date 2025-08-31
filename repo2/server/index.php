@@ -35,6 +35,7 @@ if(!$has_check_pass){
 }
 # --Method check--
 
+# --Set Default
 $_SERVER['CONTENT_TYPE'] = (isset($_SERVER['CONTENT_TYPE']))?$_SERVER['CONTENT_TYPE']:'application/octet-stream';
 
 $req = [
@@ -43,6 +44,9 @@ $req = [
 	'token'=>'',
 	'content-type'=>'image/png',
 ];
+
+# --Set Default--
+
 foreach(['direction','token', 'content-type', 'files',] as $k => $v) {
 	if(isset($_GET[$v])) {
 		$req[$v] = $_GET[$v];
