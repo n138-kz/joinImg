@@ -36,3 +36,8 @@ $req = [
 	'token'=>'',
 	'content-type'=>'image/png',
 ];
+foreach(['direction','token', 'content-type', 'files',] as $k => $v) {
+	if(isset($_GET[$v])) {
+		$req[$v] = $_GET[$v];
+	}
+}
