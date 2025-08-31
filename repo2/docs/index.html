@@ -29,6 +29,13 @@
 				return query_list;
 			}
 		}
+		class Discord {
+			async login (qlist) {
+				if ( qlist.error !== '' || qlist.error_description !== '' ) {
+					return qlist;
+				}
+			}
+		}
 	</script>
 	<style>
 		.font_isometric {
