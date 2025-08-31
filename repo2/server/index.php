@@ -80,6 +80,7 @@ if( substr(strtolower($req['content-type']), 0, strlen('application/json'))=='ap
 			'method'=>strtolower($_SERVER['REQUEST_METHOD']),
 		],
 	]);
+	exit(0);
 }
 # --Print in application/json--
 
