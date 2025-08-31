@@ -19,4 +19,32 @@
 	<script src="https://www.google.com/recaptcha/api.js?render=6LfCHdcUAAAAAOwkHsW_7W7MfoOrvoIw9CXdLRBA"></script>
 	<script src="https://n138-kz.github.io/lib/grecaptcha.js"></script>
 </head>
+<body>
+	<form action="" method="GET">
+		<fieldset>
+			<legend>Login</legend>
+			<a href="https://discord.com/oauth2/authorize?client_id=1331215597119340585&response_type=code&redirect_uri=https://api.n138.jp/joinImg/repo2/docs/&scope=identify+openid+guilds" target="_self"><img alt="Login with Discord" src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d74e9607e61eeec9c91b_Logo.svg"></a>
+		</fieldset>
+		<fieldset>
+			<legend>Direction</legend>
+			<select>
+				<option value="vertical">垂直, Vertical</option>
+				<option value="horizontal">水平, Horizontal</option>
+			</select>
+		</fieldset>
+		<fieldset>
+			<legend>Files</legend>
+			<div>
+				<input type="button" value="+">
+				<input type="button" value="-" class="font_isometric">
+				<input type="url" name="links[]" placeholder="https://example.net/images1.png">
+			</div>
+			<div>
+				<input type="button" value="+">
+				<input type="button" value="-" class="font_isometric">
+				<input type="url" name="links[]" placeholder="https://example.net/images2.png">
+			</div>
+		</fieldset>
+	</form>
+</body>
 </html>
