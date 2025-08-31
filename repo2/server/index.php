@@ -136,4 +136,3 @@ if( substr(strtolower($req['content-type']), 0, strlen('application/json'))=='ap
 	exit(0);
 }
 # --Print in application/json--
-
