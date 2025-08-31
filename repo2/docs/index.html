@@ -35,6 +35,9 @@
 			}
 			async login (qlist) {
 				if ( qlist.error !== '' || qlist.error_description !== '' ) {
+					sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'oauth2_token', null );
+					sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'users_me', null );
+
 					let dom = [];
 					dom[0] = document.createElement('div');
 					dom[0].classList.add('error');
