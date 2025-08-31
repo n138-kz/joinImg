@@ -71,6 +71,59 @@ if($req['discord'][0]['id']=='') {
 }
 # --Authn--
 
+foreach($req['files'] as $k => $v) {
+	$req['files'][$k] = [
+		'file' => [
+			'tmp_name' => tempnam('/tmp', 'php.'),
+			'name' => preg_replace('/\?.*/i', '', basename($v)),
+			'ref_uri' => $v,
+			'size' => 0,
+			'extension' => 'dat',
+		],
+		'image' => [
+			'size' => [],
+		],
+	];
+	$req['files'][$k]['file']['size'] = file_put_contents($req['files'][$k]['file']['tmp_name'], file_get_contents($v));
+	$req['files'][$k]['image']['size'] = array_merge([
+		'mime' => 'application/octet-stream',
+		'bits' => 0,
+		'channels' => 0,
+		'width' => 0,
+		'height' => 0,
+	], getimagesize($req['files'][$k]['file']['tmp_name']));
+	$req['files'][$k]['image']['size']['width'] = $req['files'][$k]['image']['size'][0];
+	$req['files'][$k]['image']['size']['height'] = $req['files'][$k]['image']['size'][1];
+	$req['files'][$k]['image']['size'][3] = explode(' ', $req['files'][$k]['image']['size'][3]);
+	switch ($req['files'][$k]['image']['size']['mime']) {
+		case 'image/jpeg':
+			$req['files'][$k]['file']['extension'] = '.jpg';
+			break;
+		case 'image/png':
+			$req['files'][$k]['file']['extension'] = '.png';
+			break;
+		case 'image/gif':
+			$req['files'][$k]['file']['extension'] = '.gif';
+			break;
+		case 'image/svg+xml':
+			$req['files'][$k]['file']['extension'] = '.svg';
+			break;
+		case 'image/avif':
+			$req['files'][$k]['file']['extension'] = '.avif';
+			break;
+		case 'image/heic':
+			$req['files'][$k]['file']['extension'] = '.heic';
+			break;
+		case 'image/heif':
+			$req['files'][$k]['file']['extension'] = '.heif';
+			break;
+		case 'image/webp':
+			$req['files'][$k]['file']['extension'] = '.webp';
+			break;
+	}
+
+}
+
 # --Print in application/json
 if( substr(strtolower($req['content-type']), 0, strlen('application/json'))=='application/json') {
 	echo json_encode([
