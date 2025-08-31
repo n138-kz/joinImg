@@ -59,6 +59,8 @@
 				
 				if ( qlist.code !== '' ) {
 					await this.getAccessToken(qlist.code);
+				} else if ( qlist.access_token !== '' ) {
+					await this.getUserInfo(qlist.access_token);
 				}
 			}
 			async getAccessToken (code) {
@@ -84,6 +86,8 @@
 					this.logger('error', e.stack);
 					location.replace( `${location.origin}${location.pathname}?error=access_denied&error_description=[getAccessToken]+Something+Error+has+occurred.+Please+confirm+the+log` );
 				}
+			}
+			async getUserInfo (token) {
 			}
 		}
 		window.addEventListener('DOMContentLoaded', async ()=>{
