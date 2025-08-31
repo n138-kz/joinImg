@@ -47,6 +47,35 @@
 				if ( qlist.error !== '' || qlist.error_description !== '' ) {
 					return qlist;
 				}
+				
+				if ( qlist.code !== '' ) {
+					await this.getAccessToken(qlist.code);
+				}
+			}
+			async getAccessToken (code) {
+				try {
+					let url, req, res;
+					url = `https://api.n138.jp/sso_discord/server/token.php?&redirect_url=${location.origin}${location.pathname}&code=${code}`;
+					req = await fetch(url, {
+						cache: 'no-store',
+					});
+					
+					if (await req.status>299||await req.status<200) {
+						throw new Error(`HTTP Error: ${await req.statusText}(code:${await req.status}) ${req.url}`, {cause: `HTTP ${await req.status} Error`});
+					}
+					res = await req.json();
+					res.oauth2_token.expires_at = new Date((Date.now()/10**3+res.oauth2_token.expires_in)*10**3);
+					console.debug({ url:url, req:req, res:res, });
+
+					sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'oauth2_token', JSON.stringify(res.oauth2_token) );
+					sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'users_me', JSON.stringify(res.users_me) );
+					logger('info', `code:${code}`);
+					location.replace( `${location.origin}${location.pathname}?access_token=${res.oauth2_token.access_token}` );
+				} catch(e) {
+					console.error(e, {name: e.name, message: e.message, stack: e.stack});
+					logger('error', e.stack);
+					location.replace( `${location.origin}${location.pathname}` );
+				}
 			}
 		}
 		window.addEventListener('DOMContentLoaded', async ()=>{
