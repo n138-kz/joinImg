@@ -30,3 +30,9 @@ if(!$has_check_pass){
 
 $_SERVER['CONTENT_TYPE'] = (isset($_SERVER['CONTENT_TYPE']))?$_SERVER['CONTENT_TYPE']:'application/octet-stream';
 
+$req = [
+	'direction'=>'',
+	'files'=>[],
+	'token'=>'',
+	'content-type'=>'image/png',
+];
