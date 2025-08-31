@@ -142,6 +142,7 @@
 							e.parentNode.parentNode.after(dom[0]);
 						}
 					});
+					Array.from(document.querySelectorAll(':disabled')).map((e)=>e.disabled=false);
 				} catch(e) {
 					console.error(e, {name: e.name, message: e.message, stack: e.stack});
 					this.logger('error', e.stack);
