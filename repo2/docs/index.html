@@ -109,7 +109,7 @@
 				} catch(e) {
 					console.error(e, {name: e.name, message: e.message, stack: e.stack});
 					this.logger('error', e.stack);
-					location.replace( `${location.origin}${location.pathname}?error=access_denied&error_description=[getAccessToken]+Something+Error+has+occurred.+Please+confirm+the+log` );
+					location.replace( `${location.origin}${location.pathname}?error=access_denied&error_description=[getUserInfo]+Something+Error+has+occurred.+Please+confirm+the+log` );
 				}
 			}
 		}
