@@ -30,6 +30,19 @@
 			}
 		}
 		class Discord {
+			logger (level='info', content='') {
+				let log = {
+					date: (new Date).toISOString(),
+					level: level,
+					data: content,
+				};
+				let logstorage = sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'log' );
+				try { logstorage = ( logstorage === "" || logstorage === null || logstorage === undefined ) ? [] : JSON.parse(logstorage); } catch { logstorage = [] };
+				logstorage.unshift(log);
+				sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'log', JSON.stringify(logstorage) );
+				sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'log_latest', JSON.stringify(log) );
+			}
+
 			async login (qlist) {
 				if ( qlist.error !== '' || qlist.error_description !== '' ) {
 					return qlist;
