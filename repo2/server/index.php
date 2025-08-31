@@ -24,6 +24,11 @@ foreach($allow_request_method as $k => $v){
 if(!$has_check_pass){
 	http_response_code(405);
 	echo json_encode([
+		'request'=>$req,
+		'connect'=>[
+			'code'=>http_response_code(),
+			'method'=>strtolower($_SERVER['REQUEST_METHOD']),
+		],
 	]);
 	exit(1);
 }
