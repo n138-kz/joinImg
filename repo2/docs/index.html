@@ -51,6 +51,17 @@
 			margin: 0;
 		}
 	</style>
+	<script>
+		function linectrl(target=null, mode='+') {
+			if(false) {
+			} else if(mode=='+') {
+				clone = target.parentNode.cloneNode(true);
+				target.parentNode.after(clone);
+			} else if(mode=='-'&&(document.querySelectorAll(`[data-group-name="linectrl_links"][value="+"]`).length>1)) {
+				target.parentNode.remove();
+			}
+		}
+	</script>
 </head>
 <body>
 	<form action="" method="GET">
