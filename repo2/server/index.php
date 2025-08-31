@@ -13,5 +13,19 @@ header("Access-Control-Allow-Headers: Content-Type, Content-Length, Origin, Acce
 header('Server: Hidden');
 header('X-Powered-By: Hidden');
 
+$has_check_pass = false;
+$allow_request_method = ['get', 'connect','options', 'head'];
+foreach($allow_request_method as $k => $v){
+	if( substr(strtolower($_SERVER['REQUEST_METHOD']), 0, strlen($v)) == $v ){
+		$has_check_pass = true;
+	}
+}
+if(!$has_check_pass){
+	http_response_code(405);
+	echo json_encode([
+	]);
+	exit(1);
+}
+
 $_SERVER['CONTENT_TYPE'] = (isset($_SERVER['CONTENT_TYPE']))?$_SERVER['CONTENT_TYPE']:'application/octet-stream';
 
