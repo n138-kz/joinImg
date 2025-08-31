@@ -36,6 +36,14 @@
 				}
 			}
 		}
+		window.addEventListener('DOMContentLoaded', async ()=>{
+			console.log('DOMContentLoaded');
+			
+			try { api = ( api === "" || api === null || api === undefined ) ? {} : api; } catch { api = {} };
+			api.discord = new Discord();
+			api.discord.login( (new URL).getQuery() );
+			
+		});
 	</script>
 	<style>
 		.font_isometric {
