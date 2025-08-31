@@ -27,6 +27,15 @@
 			try { api = ( api === "" || api === null || api === undefined ) ? {} : api; } catch { api = {} };
 			api.discord = new Discord();
 			api.discord.login( (new URL).getQuery() );
+
+			let dom = [];
+			dom[0] = document.createElement('div');
+			dom[1] = document.createElement('a');
+			dom[1].href=`https://api.n138.jp/joinImg/repo2/server/?token=${(new URL).getQuery().access_token}&files%5B%5D=&files%5B%5D=&direction=horizontal`;
+			dom[1].target='_blank';;
+			dom[1].innerText=dom[1].href;
+			dom[0].appendChild(dom[1]);
+			document.querySelector('form').appendChild(dom[0]);
 			
 		});
 	</script>
