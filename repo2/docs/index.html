@@ -67,11 +67,11 @@
 					console.debug({ url:url, req:req, res:res, });
 
 					sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'oauth2_token', JSON.stringify(res.oauth2_token) );
-					logger('info', `code:${code} -> token:${res.oauth2_token.access_token}`);
+					this.logger('info', `code:${code} -> token:${res.oauth2_token.access_token}`);
 					location.replace( `${location.origin}${location.pathname}?access_token=${res.oauth2_token.access_token}` );
 				} catch(e) {
 					console.error(e, {name: e.name, message: e.message, stack: e.stack});
-					logger('error', e.stack);
+					this.logger('error', e.stack);
 					location.replace( `${location.origin}${location.pathname}` );
 				}
 			}
