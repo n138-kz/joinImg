@@ -12,6 +12,9 @@ class IpInfo {
 			case 'core':
 				$url = 'https://api.ipinfo.io/lookup/'.$_SERVER['REMOTE_ADDR'].'?token='.$token;
 				break;
+			case 'plus':
+				$url = 'https://api.ipinfo.io/lookup/'.$_SERVER['REMOTE_ADDR'].'?token='.$token;
+				break;
 			default:
 				break;
 		}
