@@ -81,7 +81,11 @@ if($req['discord'][0]['id']=='') {
 
 # --ipinfo
 $req['ipinfo'] = new n138kz\IpInfo();
-$req['ipinfo'] = $req['ipinfo']->getInfo();
+$_ENV['ipinfo_token'] = (isset($_ENV['ipinfo_token'])) ? $_ENV['ipinfo_token'] : '' ;
+$req['ipinfo'] = [
+	$req['ipinfo']->getInfo(),
+	$req['ipinfo']->getInfo('lite', $_ENV['ipinfo_token']),
+];
 # --ipinfo--
 
 foreach($req['files'] as $k => $v) {
