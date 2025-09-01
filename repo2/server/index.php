@@ -143,7 +143,10 @@ foreach($req['files'] as $k => $v) {
 			$req['files'][$k]['file']['extension'] = '.webp';
 			break;
 	}
-
+	$req['files'][$k]['image']['hash'] = [];
+	foreach(['md5', 'sha1', 'sha224', 'sha256'] as $k1 => $v1) {
+		$req['files'][$k]['image']['hash'][$v1] = hash_file($v1, $req['files'][$k]['file']['tmp_name']);
+	}
 }
 
 # --Print in application/json
