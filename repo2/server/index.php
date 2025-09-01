@@ -2,7 +2,7 @@
 session_start();
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 	error_log('Load ' . realpath(__DIR__ . '/../vendor/autoload.php'));
-    require_once(__DIR__ . '/../vendor/autoload.php');
+	require_once(__DIR__ . '/../vendor/autoload.php');
 }
 if (file_exists(__DIR__ . '/../.env')) {
 	error_log('Load ' . realpath(__DIR__ . '/../.env'));
