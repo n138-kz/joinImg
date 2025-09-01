@@ -8,8 +8,10 @@ if (file_exists(__DIR__ . '/../.env')) {
 	error_log('Load ' . realpath(__DIR__ . '/../.env'));
 	Dotenv\Dotenv::createImmutable(realpath(__DIR__.'/../'))->load();
 }
-require_once(__DIR__ . '/module/class_Discord.php');
-require_once(__DIR__ . '/module/class_IpInfo.php');
+foreach(glob(__DIR__ . '/module/' . '*.php') as $k => $v) {
+	error_log('Load ' . realpath($v));
+	require_once(realpath($v));
+}
 
 date_default_timezone_set('Asia/Tokyo');
 header('Content-Type: application/json; charset=UTF-8');
