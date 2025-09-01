@@ -27,3 +27,4 @@ build/
 *.exe
 *.msi
 *.jar
+*.swp
