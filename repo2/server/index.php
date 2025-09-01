@@ -54,8 +54,8 @@ foreach(['direction','token', 'content-type', 'files',] as $k => $v) {
 }
 
 # --Authn
-$api_discord = new n138kz\Discord();
-$req['discord'] = $api_discord->login(['access_token'=>$req['token']]);
+$req['discord'] = new n138kz\Discord();
+$req['discord'] = $req['discord']->login(['access_token'=>$req['token']]);
 unset($req['token']);
 if($req['discord'][0]['id']=='') {
 	http_response_code(401);
