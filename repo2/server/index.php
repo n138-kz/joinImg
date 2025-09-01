@@ -144,7 +144,7 @@ foreach($req['files'] as $k => $v) {
 			break;
 	}
 	$req['files'][$k]['image']['hash'] = [];
-	foreach(['md5', 'sha1', 'sha224', 'sha256'] as $k1 => $v1) {
+	foreach(['crc32', 'md5', 'sha1', 'sha224', 'sha256', 'sha384', 'sha512'] as $k1 => $v1) {
 		$req['files'][$k]['image']['hash'][$v1] = hash_file($v1, $req['files'][$k]['file']['tmp_name']);
 	}
 }
