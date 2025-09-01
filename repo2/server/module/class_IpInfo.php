@@ -34,7 +34,10 @@ class IpInfo {
 			'country_code'=>'',
 			'continent_code'=>'',
 			'continent'=>'',
+			'status'=>'',
+			'error'=>[],
 		], $res);
+		ksort($res);
 		$res_info = curl_getinfo($req);
 		$res_info['url'] = str_replace($token, '***', $res_info['url']);
 		return [
