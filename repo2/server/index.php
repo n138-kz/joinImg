@@ -4,6 +4,7 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     require_once(__DIR__ . '/../vendor/autoload.php');
 }
 require_once(__DIR__ . '/module/class_Discord.php');
+require_once(__DIR__ . '/module/class_IpInfo.php');
 
 date_default_timezone_set('Asia/Tokyo');
 header('Content-Type: application/json; charset=UTF-8');
@@ -70,6 +71,11 @@ if($req['discord'][0]['id']=='') {
 
 }
 # --Authn--
+
+# --ipinfo
+$req['ipinfo'] = new n138kz\IpInfo();
+$req['ipinfo'] = $req['ipinfo']->getInfo();
+# --ipinfo--
 
 foreach($req['files'] as $k => $v) {
 	$req['files'][$k] = [
