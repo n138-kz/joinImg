@@ -7,6 +7,11 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 if (file_exists(__DIR__ . '/../.env')) {
 	error_log('Load ' . realpath(__DIR__ . '/../.env'));
 	Dotenv\Dotenv::createImmutable(realpath(__DIR__.'/../'))->load();
+} else {
+	$data = '';
+	$data .= 'ipinfo_token=' . PHP_EOL;
+	error_log('Save ' . (__DIR__ . '/../.env'));
+	file_put_contents((__DIR__ . '/../.env'), $data);
 }
 foreach(glob(__DIR__ . '/module/' . '*.php') as $k => $v) {
 	error_log('Load ' . realpath($v));
